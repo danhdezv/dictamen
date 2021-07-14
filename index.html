@@ -245,33 +245,43 @@ const _busqueda = (start) =>{
                     let row = document.createElement("tr");
                     console.log("que selec escogi");
                     
-                    if ( db_distrito[key].tipoCurso == "2021B" ){
 
-                            row.innerHTML=`
+                
+                    switch ( db_distrito[key].tipoCurso  ) {
+                        case "2021B":
+                        row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
-                            <td > ${key, db_distrito[key].mensaje} </td>
+                            <td > ${key, db_distrito[key].mensaje} 
+                                <p> Bienvenido </p>
+                                </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
                             <td > ${key, db_distrito[key].horario }</td>
                             <td > ${key, db_distrito[key].aula }</td>
                             `;
 
-                            lista.appendChild(row);                   
-                    }
-                   
+                            lista.appendChild(row);   
+                        break;
 
-                    if ( db_distrito[key].tipoCurso == "BASE" ){
-
+                        case "BASE":
                         row.innerHTML=`
-                        <td > ${ key,db_distrito[key].registro }</td>
-                        <td > ${key, db_distrito[key].mensaje} </td>
-                        <td > ${key, db_distrito[key].grupo }</td>
-                        <td > ${key, db_distrito[key].fecha } </td>
-                        <td > ${key, db_distrito[key].horario }</td>
-                        <td > ${key, db_distrito[key].aula }</td>
-                        `;
+                            <td > ${ key,db_distrito[key].registro }</td>
+                            <td > ${key, db_distrito[key].mensaje} 
+                                <p> Hoarios para curso de sensibilizacion para padres consulta el link </p>
+                                </td>
+                            <td > ${key, db_distrito[key].grupo }</td>
+                            <td > ${key, db_distrito[key].fecha } </td>
+                            <td > ${key, db_distrito[key].horario }</td>
+                            <td > ${key, db_distrito[key].aula }</td>
+                            `;
 
-                        lista.appendChild(row);                   
+                            lista.appendChild(row);   
+                        break;
+
+                        default:
+                            //
+                            document.getElementById("mensaje_error").innerHTML = "Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
+                        break;
                     }
                             
 
@@ -280,9 +290,10 @@ const _busqueda = (start) =>{
                     }
                                                       else{
                     console.log("no math");
+                    document.getElementById("mensaje_error").innerHTML = "Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
                     
-                }
-
+               }
+                                                      
             });
 
                 addEventListener('load',table);
