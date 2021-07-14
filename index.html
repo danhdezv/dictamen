@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lISTADO DE ADMISION  </title>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script type="text/javascript" >
+
+
+
+
+const db_distrito = [
+
+
+{ registro: "1" , tipoCurso: "2021B" , mensaje: "Mensaje 1",  grupo: "1",fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "17"},
+{ registro: "2" , tipoCurso: "2021B" , mensaje: "Mensaje 1",  grupo: "2",fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "18"},
+
+{ registro: "512345678" , tipoCurso: "2021B" , mensaje: "Mensaje 1",grupo: "2", fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "17"},
+{ registro: "512345679" , tipoCurso: "2021B" , mensaje: "Mensaje 1",grupo: "2", fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "17"},
+{ registro: "512345690" , tipoCurso: "BASE" , mensaje: "Mensaje 1",grupo: "2" ,fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "17"},
+{ registro: "3" , tipoCurso: "BASE" , mensaje: "Mensaje 2", grupo: "2" ,fecha : "20-07-2021 ", horario:"9:00 - 13:00 pm", aula: "17"}
+
+
+];
+
+const _db_busqueda = (start) => {
+    let busqueda = start;
+    return{
+        getDatos:() => {
+            return busqueda;
+        }
+    }
+}
+
+
+
+
+const _distrito = (start) =>{
+    let distrito = start;
+    return{
+        mostrar:( registro, tipoCurso) =>{
+            //const index = distrito.findIndex((item) => item.id == id);
+
+        },
+        getAllSeccion:() =>{
+            return distrito;
+        },
+        mostrarRegistro:( registro ) =>{
+            const index = distrito.findIndex((item) => item.id == id);
+            return distrito[index];
+
+        }
+    }
+}
+
+const _busqueda = (start) =>{
+    let busqueda = start;
+    return{
+        mostrar:( registro ) =>{
+            //const index = distrito.findIndex((item) => item.id == id);
+
+        },
+        getAllBusqueda:() =>{
+            return busqueda;
+        },
+        mostrarRegistro:( registro ) =>{
+            const index = busqueda.findIndex((item) => item.id == id);
+            return busqueda[index];
+
+        },
+        newBusqueda:(registro, tipoCurso ,  mensaje, fecha , horario, aula ) =>{
+            const lastbus = busqueda[busqueda.length -1];
+            busqueda.push({
+                registro : registro,
+                tipoCurso: tipoCurso,  
+                mensaje: mensaje, 
+                grupo : grupo,
+                fecha :fecha, 
+                horario: horario,
+                aula: aula,
+            });
+
+        }
+    }
+}
+
+
+
+
+</script>
+
+</script>
+<style type="text/css">
+    .lista_select{
+        border: 3px solid #58ACFA;
+        background-color:#2ECCFA;
+        color:white;
+        font-size:17px;
+        width:350px;
+        height:40px;    
+    }
+    .caja{
+        border: 3px solid #58ACFA;
+        width:350px;
+        height:35px;
+    }/*
+    .boton_personalizado{
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 20px;
+        color: #ffffff;
+        background-color: #1883ba;
+        border-radius: 6px;
+        border: 2px solid #0016b0;
+        width:350px;
+        height:45px;
+    }*/
+
+    .btn{
+        width:100%;
+        background: linear-gradient(160deg, #2B5D98, #1D8AA7  );
+    }
+
+    .btn:active{
+        
+        background: linear-gradient(160deg, #1D8AA7 );
+    }
+/*
+    .boton_personalizado:hover{
+        color: #1883ba;
+        background-color: #ffffff;
+    }*/
+    /*
+    .boton_personalizado:active{
+        /*Gracias a que el elemento está en posición relativa, podemos bajarlo 4 px sin alterar el HTMLtop:4px;
+        /*bajamos el tamaño de la sombra para conseguir el efecto de profundidad*/
+      /*  -moz-box-shadow: 0px 1px 0px 0px rgb(0, 105, 202);
+        -webkit-box-shadow: 0px 1px 0px 0px rgb(0, 105, 202);
+        box-shadow: 0px 1px 0px 0px rgb(0, 105, 202);
+        color: #000000;
+        background-color: #ffffff;
+        background-color: #1883ba;
+    }
+  */
+</style>
+<body>
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <center> <h1>DICTAMEN PREPARATORIA 22</h1> <center> 
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col">
+                <label for="radio" style="font-size:30px"> Introduce tu Numero de Registro</label>
+                
+            </div>
+            </div>
+            <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" id="seccion"  name="Seccion" placeholder="Ejemplo 5123456"   onkeyup = "if(event.keyCode == 13){ miFunc() }"> </input>
+            </div>
+        </div>
+        &nbsp;
+        
+        
+        &nbsp;
+        <div class="row">
+            <div class="col">         
+            <p>
+                <a href="#collapsecasillas" class="btn btn-primary btn-lg btn-block " data-toggle="collapse" role="button"
+                aria-expanded="false" aria-controls="collapseExample" onclick="miFunc()" >
+                <b>Buscar</b>
+                </a>
+            </p>
+            </div>
+        </div>
+
+        <div class="row"></div>
+            <p id="mensaje_error"></p> 
+            <div class="collapse" id="collapsecasillas">
+                <table class="table table-striped" id="casillasTable">
+                    <thead class="table-dark">
+                        <tr>
+                            
+                            <th scope="col"># Registro</th>
+                            <th scope="col">Mensaje</th>
+                            <th scope="col">Grupo</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col">Aula</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+            
+    </div>
+ 
+
+
+</body> 
+   <script>
+      function miFunc() {
+        
+        //alert('Se ha dado clic al botón!');
+        //console.log("aqui");
+        let inputValue = document.getElementById("seccion").value; 
+//        let tipoCasilla = document.getElementById("tipoCasilla").value; 
+        console.log(inputValue);
+        if(inputValue >= 1 && inputValue <= 3315){
+            console.log("aqui entre");
+   
+            
+  
+            
+            let table = document.getElementById('casillasTable');
+            let lista = table.getElementsByTagName("tbody")[0];
+    
+            lista.innerHTML = "";
+            document.getElementById("mensaje_error").innerHTML = ""; 
+            //let row = document.createElement("tr");
+            
+
+            //IMPRESION DE TABLA
+
+            Object.keys(db_distrito).forEach(key => {
+                if ( db_distrito[key].registro == inputValue ){
+                    let row = document.createElement("tr");
+                    console.log("que selec escogi");
+                    
+                    if ( db_distrito[key].tipoCurso == "2021B" ){
+
+                            row.innerHTML=`
+                            <td > ${ key,db_distrito[key].registro }</td>
+                            <td > ${key, db_distrito[key].mensaje} </td>
+                            <td > ${key, db_distrito[key].grupo }</td>
+                            <td > ${key, db_distrito[key].fecha } </td>
+                            <td > ${key, db_distrito[key].horario }</td>
+                            <td > ${key, db_distrito[key].aula }</td>
+                            `;
+
+                            lista.appendChild(row);                   
+                    }
+                   
+
+                    if ( db_distrito[key].tipoCurso == "BASE" ){
+
+                        row.innerHTML=`
+                        <td > ${ key,db_distrito[key].registro }</td>
+                        <td > ${key, db_distrito[key].mensaje} </td>
+                        <td > ${key, db_distrito[key].grupo }</td>
+                        <td > ${key, db_distrito[key].fecha } </td>
+                        <td > ${key, db_distrito[key].horario }</td>
+                        <td > ${key, db_distrito[key].aula }</td>
+                        `;
+
+                        lista.appendChild(row);                   
+                    }
+                            
+
+
+                          
+                    }
+                                                      else{
+                    console.log("no math");
+                    
+                }
+
+            });
+
+                addEventListener('load',table);
+
+        }
+        else{
+            //mensaje de no se encontro seccion
+            //alert("no se encuentra LA SECCION ");
+            document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro"; 
+
+        }        
+        
+      }
+
+    </script>
+
+</html>
+
+
+  
+   
