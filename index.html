@@ -34,6 +34,7 @@ const db_distrito = [
 
 ];
 
+/*
 const _db_busqueda = (start) => {
     let busqueda = start;
     return{
@@ -44,7 +45,7 @@ const _db_busqueda = (start) => {
 }
 
 
-
+/*
 
 const _distrito = (start) =>{
     let distrito = start;
@@ -63,8 +64,8 @@ const _distrito = (start) =>{
         }
     }
 }
-
-const _busqueda = (start) =>{
+/*
+ const _busqueda = (start) =>{
     let busqueda = start;
     return{
         mostrar:( registro ) =>{
@@ -94,6 +95,7 @@ const _busqueda = (start) =>{
         }
     }
 }
+*/
 
 
 
@@ -160,10 +162,25 @@ const _busqueda = (start) =>{
     <div class="container">
         <div class="row">
             <div class="col">
-                <center> <h1>DICTAMEN PREPARATORIA 22</h1> <center> 
+                <center> <h1>PREPARATORIA 22 TLAQUEPAQUE</h1> </center> 
+            </div>
+        </div> <BR></BR>
+        <div class="row">
+            <div class="col">
+                <center> <h1>DICTAMEN DE ADMISION </h1>
+                <h2> <u> CALENDARIO 2021-B </u></h2> 
+                </center> 
             </div>
         </div>
-        <br><br><br>
+        <div class="row">
+            <div class="col">
+                <center> 
+                <img src="./logo_prepa-recuperado.png" alt=""> 
+                </center> 
+            </div>
+        </div>
+
+        <br><br>
         <div class="row">
             <div class="col">
                 <label for="radio" style="font-size:30px"> Introduce tu Numero de Registro</label>
@@ -193,6 +210,8 @@ const _busqueda = (start) =>{
         <div class="row"></div>
             <p id="mensaje_error"></p> 
             <div class="collapse" id="collapsecasillas">
+
+                </p>
                 <table class="table table-striped" id="casillasTable">
                     <thead class="table-dark">
                         <tr>
@@ -223,12 +242,15 @@ const _busqueda = (start) =>{
         //console.log("aqui");
         let inputValue = document.getElementById("seccion").value; 
 //        let tipoCasilla = document.getElementById("tipoCasilla").value; 
-        console.log(inputValue);
-        if(inputValue >= 1 && inputValue <= 3315){
+        //console.log(inputValue);
+        //if(inputValue >= 1 && inputValue <= 3315){
+
 //            console.log("aqui entre");
    
+
+            var encontrado = new Boolean(false);
             
-  
+            
             
             let table = document.getElementById('casillasTable');
             let lista = table.getElementsByTagName("tbody")[0];
@@ -237,13 +259,16 @@ const _busqueda = (start) =>{
             document.getElementById("mensaje_error").innerHTML = ""; 
             //let row = document.createElement("tr");
             
+            
+            
 
             //IMPRESION DE TABLA
 
             Object.keys(db_distrito).forEach(key => {
                 if ( db_distrito[key].registro == inputValue ){
+                    encontrado = true;
                     let row = document.createElement("tr");
-                    console.log("que selec escogi");
+                    //console.log("que seleccion");
                     
 
                 
@@ -252,7 +277,7 @@ const _busqueda = (start) =>{
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> Bienvenido </p>
+                                <p> Bienvenido CICLO 2021-B </p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -267,7 +292,8 @@ const _busqueda = (start) =>{
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> Hoarios para curso de sensibilizacion para padres consulta el link </p>
+                                <p> SEMESTE BASE 
+                                    Horios para curso de sensibilizacion para padres consulta el link </p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -280,13 +306,16 @@ const _busqueda = (start) =>{
 
                         default:
                             //
-                            document.getElementById("mensaje_error").innerHTML = "Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
+                            //document.getElementById("mensaje_error").innerHTML = "11111Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
                         break;
                     }
-                }                    
+                    document.getElementById("mensaje_error").innerHTML = "ingresaste el siguiente numero de registro : <b>" + inputValue + "</b> Verifica que sea el tuyo" ;
+                }                   
                     else{
-                    //console.log("no math");
-                    document.getElementById("mensaje_error").innerHTML = "<p>Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
+                    console.log("no math");
+
+                    
+                   // document.getElementById("mensaje_error").innerHTML = "<p>222Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
                     
                }
                                                       
@@ -294,14 +323,24 @@ const _busqueda = (start) =>{
 
                 addEventListener('load',table);
 
-        }
+        //}
+        /*
         else{
+            
+            if (encontrado == false){
+                        console.log("asdfasdf111");
+                    }
             //mensaje de no se encontro seccion
             //alert("no se encuentra LA SECCION ");
-            document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro"; 
+            document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro Si tu interes es volver a participar para formar parte de la universidad de guadalajara consulta el sitio control escolar udg"; 
 
-        }        
-        
+        }*/
+        //        
+        if (encontrado == false){
+                        console.log("no encontrado");
+                        document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro Si tu interes es volver a participar para formar parte de la universidad de guadalajara consulta el sitio control escolar udg"; 
+                    }
+
       }
 
     </script>
