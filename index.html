@@ -172,7 +172,7 @@ const _distrito = (start) =>{
         </div> <BR></BR>
         <div class="row">
             <div class="col">
-                <center> <h1>DICTAMEN DE ADMISION </h1>
+                <center> <h1>DICTAMEN DE ADMISIÓN  </h1>
                 <h2> <u> CALENDARIO 2021-B </u></h2> 
                 </center> 
             </div>
@@ -188,7 +188,7 @@ const _distrito = (start) =>{
         <br><br>
         <div class="row">
             <div class="col">
-                <label for="radio" style="font-size:30px"> Introduce tu Numero de Registro</label>
+                <label for="radio" style="font-size:30px"> Introduce tu número de Registro</label>
                 
             </div>
             </div>
@@ -214,6 +214,7 @@ const _distrito = (start) =>{
 
         <div class="row"></div>
             <p id="mensaje_error"></p> 
+            <p id="mensaje_estatus"></p> 
             <div class="collapse" id="collapsecasillas">
 
                 </p>
@@ -262,6 +263,8 @@ const _distrito = (start) =>{
     
             lista.innerHTML = "";
             document.getElementById("mensaje_error").innerHTML = ""; 
+            document.getElementById("mensaje_estatus").innerHTML = ""; 
+            
             //let row = document.createElement("tr");
             
             
@@ -279,10 +282,12 @@ const _distrito = (start) =>{
                 
                     switch ( db_distrito[key].tipoCurso  ) {
                         case "2021B":
+                        document.getElementById("mensaje_estatus").innerHTML = "Bienvenido, lee claramente los datos que se muestran en la siguiente tabla. Indican el día, la hora y el lugar en los que deberás presentarte en la Preparatoria 22" ;
+                        
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> Bienvenido CICLO 2021-B </p>
+                                <p> ADMITIDO CICLO ESCOLAR 2021B (INICIA CLASES EN AGOSTO 2021) </p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -294,11 +299,12 @@ const _distrito = (start) =>{
                         break;
 
                         case "BASE":
+                        document.getElementById("mensaje_estatus").innerHTML = "JUNTA DE SENSIBILIZACION DE SEMESTRE BASE PARA PADRES DE FAMILIA, PARA ESTA ACTIVIDAD SOLO DEBEN ACUDIR LOS PADRES DE FAMILIA O TUTORES La siguiente tabla, indica el día, la hora y el lugar en los que deberán acudir a la Preparatoria 22" ;
+
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> SEMESTE BASE 
-                                    Horios para curso de sensibilizacion para padres consulta el link </p>
+                                <p> ADMITIDO CICLO ESCOLAR 2022A (INICIA CLASES EN ENERO 2022)</p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -343,7 +349,7 @@ const _distrito = (start) =>{
         //        
         if (encontrado == false){
                         console.log("no encontrado");
-                        document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro Si tu interes es volver a participar para formar parte de la universidad de guadalajara consulta el sitio control escolar udg"; 
+                        document.getElementById("mensaje_error").innerHTML = "Si tu interés es formar parte de la Universidad de Guadalajara Consulta los pasos a seguir en: <a href='http://escolar.udg.mx/aspirantes/calendarios' > http://escolar.udg.mx/aspirantes/calendarios </a> "; 
                     }
 
       }
