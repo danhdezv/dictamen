@@ -34,6 +34,7 @@ const db_distrito = [
 
 ];
 
+/*
 const _db_busqueda = (start) => {
     let busqueda = start;
     return{
@@ -44,7 +45,7 @@ const _db_busqueda = (start) => {
 }
 
 
-
+/*
 
 const _distrito = (start) =>{
     let distrito = start;
@@ -63,8 +64,8 @@ const _distrito = (start) =>{
         }
     }
 }
-
-const _busqueda = (start) =>{
+/*
+ const _busqueda = (start) =>{
     let busqueda = start;
     return{
         mostrar:( registro ) =>{
@@ -94,6 +95,7 @@ const _busqueda = (start) =>{
         }
     }
 }
+*/
 
 
 
@@ -114,7 +116,12 @@ const _busqueda = (start) =>{
         border: 3px solid #58ACFA;
         width:350px;
         height:35px;
-    }/*
+    }
+    .titulo{
+        padding-top: 10px;
+        color :#8c2b3d;
+    }
+     /*   
     .boton_personalizado{
         text-decoration: none;
         font-weight: 600;
@@ -160,13 +167,28 @@ const _busqueda = (start) =>{
     <div class="container">
         <div class="row">
             <div class="col">
-                <center> <h1>DICTAMEN PREPARATORIA 22</h1> <center> 
+                <center> <h1 class="titulo">PREPARATORIA 22 TLAQUEPAQUE</h1> </center> 
             </div>
-        </div>
-        <br><br><br>
+        </div> <BR></BR>
         <div class="row">
             <div class="col">
-                <label for="radio" style="font-size:30px"> Introduce tu Numero de Registro</label>
+                <center> <h1>DICTAMEN DE ADMISIÓN  </h1>
+                <h2> <u> CALENDARIO 2021-B </u></h2> 
+                </center> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <center> 
+                <img src="./logo_prepa-recuperado.png" alt=""> 
+                </center> 
+            </div>
+        </div>
+
+        <br><br>
+        <div class="row">
+            <div class="col">
+                <label for="radio" style="font-size:30px"> Introduce tu número de Registro</label>
                 
             </div>
             </div>
@@ -192,7 +214,10 @@ const _busqueda = (start) =>{
 
         <div class="row"></div>
             <p id="mensaje_error"></p> 
+            <p id="mensaje_estatus"></p> 
             <div class="collapse" id="collapsecasillas">
+
+                </p>
                 <table class="table table-striped" id="casillasTable">
                     <thead class="table-dark">
                         <tr>
@@ -223,36 +248,46 @@ const _busqueda = (start) =>{
         //console.log("aqui");
         let inputValue = document.getElementById("seccion").value; 
 //        let tipoCasilla = document.getElementById("tipoCasilla").value; 
-        console.log(inputValue);
-        if(inputValue >= 1 && inputValue <= 3315){
-            console.log("aqui entre");
+        //console.log(inputValue);
+        //if(inputValue >= 1 && inputValue <= 3315){
+
+//            console.log("aqui entre");
    
+
+            var encontrado = new Boolean(false);
             
-  
+            
             
             let table = document.getElementById('casillasTable');
             let lista = table.getElementsByTagName("tbody")[0];
     
             lista.innerHTML = "";
             document.getElementById("mensaje_error").innerHTML = ""; 
+            document.getElementById("mensaje_estatus").innerHTML = ""; 
+            
             //let row = document.createElement("tr");
+            
+            
             
 
             //IMPRESION DE TABLA
 
             Object.keys(db_distrito).forEach(key => {
                 if ( db_distrito[key].registro == inputValue ){
+                    encontrado = true;
                     let row = document.createElement("tr");
-                    console.log("que selec escogi");
+                    //console.log("que seleccion");
                     
 
                 
                     switch ( db_distrito[key].tipoCurso  ) {
                         case "2021B":
+                        document.getElementById("mensaje_estatus").innerHTML = "Bienvenido, lee claramente los datos que se muestran en la siguiente tabla. Indican el día, la hora y el lugar en los que deberás presentarte en la Preparatoria 22" ;
+                        
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> Bienvenido </p>
+                                <p> ADMITIDO CICLO ESCOLAR 2021B (INICIA CLASES EN AGOSTO 2021) </p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -264,10 +299,12 @@ const _busqueda = (start) =>{
                         break;
 
                         case "BASE":
+                        document.getElementById("mensaje_estatus").innerHTML = "JUNTA DE SENSIBILIZACION DE SEMESTRE BASE PARA PADRES DE FAMILIA, PARA ESTA ACTIVIDAD SOLO DEBEN ACUDIR LOS PADRES DE FAMILIA O TUTORES La siguiente tabla, indica el día, la hora y el lugar en los que deberán acudir a la Preparatoria 22" ;
+
                         row.innerHTML=`
                             <td > ${ key,db_distrito[key].registro }</td>
                             <td > ${key, db_distrito[key].mensaje} 
-                                <p> Hoarios para curso de sensibilizacion para padres consulta el link </p>
+                                <p> ADMITIDO CICLO ESCOLAR 2022A (INICIA CLASES EN ENERO 2022)</p>
                                 </td>
                             <td > ${key, db_distrito[key].grupo }</td>
                             <td > ${key, db_distrito[key].fecha } </td>
@@ -280,17 +317,16 @@ const _busqueda = (start) =>{
 
                         default:
                             //
-                            document.getElementById("mensaje_error").innerHTML = "Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
+                            //document.getElementById("mensaje_error").innerHTML = "11111Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
                         break;
                     }
-                            
-
-
-                          
-                    }
-                                                      else{
+                    document.getElementById("mensaje_error").innerHTML = "ingresaste el siguiente numero de registro : <b>" + inputValue + "</b> Verifica que sea el tuyo" ;
+                }                   
+                    else{
                     console.log("no math");
-                    document.getElementById("mensaje_error").innerHTML = "Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
+
+                    
+                   // document.getElementById("mensaje_error").innerHTML = "<p>222Si tu interes es volver a participara para formar parte de la univercidad de guaadalajara consulta el sitio control escolar udg";
                     
                }
                                                       
@@ -298,14 +334,24 @@ const _busqueda = (start) =>{
 
                 addEventListener('load',table);
 
-        }
+        //}
+        /*
         else{
+            
+            if (encontrado == false){
+                        console.log("asdfasdf111");
+                    }
             //mensaje de no se encontro seccion
             //alert("no se encuentra LA SECCION ");
-            document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro"; 
+            document.getElementById("mensaje_error").innerHTML = "NO SE ENCONTRO El registro Si tu interes es volver a participar para formar parte de la universidad de guadalajara consulta el sitio control escolar udg"; 
 
-        }        
-        
+        }*/
+        //        
+        if (encontrado == false){
+                        console.log("no encontrado");
+                        document.getElementById("mensaje_error").innerHTML = "Si tu interés es formar parte de la Universidad de Guadalajara Consulta los pasos a seguir en: <a href='http://escolar.udg.mx/aspirantes/calendarios' > http://escolar.udg.mx/aspirantes/calendarios </a> "; 
+                    }
+
       }
 
     </script>
